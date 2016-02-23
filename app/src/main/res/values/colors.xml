@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">@color/fundoMaisEscuro</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="fundo">#34495e</color>
+    <color name="fundoMaisEscuro">#1e2c3a</color>
+    <color name="texto">#fff</color>
+    <color name="fundo_text_view">#507ca8</color>
+</resources>

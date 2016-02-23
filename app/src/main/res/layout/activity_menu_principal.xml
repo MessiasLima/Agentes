@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/margem_vertical_menu_principal"
+    tools:context="br.com.agente.agentes.activity.MenuPrincipal">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_agente" />
+
+    <TextView
+        android:id="@+id/textView_titulo_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="0dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="@string/app_name"
+        android:textSize="@dimen/tamanho_texto_titulo" />
+
+    <LinearLayout
+        android:id="@+id/botao_consultar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/fundoMaisEscuro"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/tamanho_icone_menu"
+            android:layout_height="@dimen/tamanho_icone_menu"
+            android:src="@drawable/ic_lupa"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/botao_consultar_texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/consultar"
+            android:textSize="@dimen/tamanho_texto_titulo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botao_agentes_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margem_vertical_botao"
+        android:background="@color/fundoMaisEscuro"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/tamanho_icone_menu"
+            android:layout_height="@dimen/tamanho_icone_menu"
+            android:src="@drawable/ic_pin"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/botao_agentes_area_texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agentes_da_area"
+            android:textSize="@dimen/tamanho_texto_titulo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botao_denunciar_focos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margem_vertical_botao"
+        android:background="@color/fundoMaisEscuro"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/tamanho_icone_menu"
+            android:layout_height="@dimen/tamanho_icone_menu"
+            android:src="@drawable/ic_megafone"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/botao_denunciar_focos_texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/denunciar_focos"
+            android:textSize="@dimen/tamanho_texto_titulo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botao_telefones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margem_vertical_botao"
+        android:background="@color/fundoMaisEscuro"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/tamanho_icone_menu"
+            android:layout_height="@dimen/tamanho_icone_menu"
+            android:src="@drawable/ic_fone"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/botao_telefones_texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telefones"
+            android:textSize="@dimen/tamanho_texto_titulo" />
+    </LinearLayout>
+
+</LinearLayout>
