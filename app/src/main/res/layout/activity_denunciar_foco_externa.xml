@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_denunciar_focos" />
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/fundo">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imageView_icone_denunciar_foco"
+                android:layout_width="@dimen/tamanho_icone_menu"
+                android:layout_height="@dimen/tamanho_icone_menu"
+                android:src="@drawable/ic_megafone"/>
+            <TextView
+                android:id="@+id/titulo_denunciar_foco"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/tamanho_texto_subtitulo"
+                android:text="@string/denunciar_focos"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/botao_voltar_denunciar_foco"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+            <ImageView
+
+                android:layout_width="@dimen/tamanho_icone_menu"
+                android:layout_height="@dimen/tamanho_icone_menu"
+                android:src="@drawable/ic_voltar"/>
+            <TextView
+                android:id="@+id/voltar_denunciar_foco"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/tamanho_texto_subtitulo"
+                android:text="@string/voltar"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

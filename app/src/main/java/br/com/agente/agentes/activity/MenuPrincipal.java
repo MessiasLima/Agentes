@@ -65,7 +65,11 @@ public class MenuPrincipal extends AppCompatActivity {
             return;
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 30 * 1000, 5, listenerDeLocalizacao);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 30 * 1000, 5, listenerDeLocalizacao);
+        try {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 30 * 1000, 5, listenerDeLocalizacao);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     private void iniciarComponentes() {

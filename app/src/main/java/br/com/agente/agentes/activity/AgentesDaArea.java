@@ -5,7 +5,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.gps.ListenerDeLocalizacao;
+import br.com.agente.agentes.util.ControleDeMapa;
 import br.com.agente.agentes.util.Fonte;
 
 public class AgentesDaArea extends AppCompatActivity {
@@ -70,20 +71,20 @@ public class AgentesDaArea extends AppCompatActivity {
             mapa = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa)).getMap();
         }
         if (ListenerDeLocalizacao.localizacaoAtual != null) {
-            adicionarMarcadorJogador(ListenerDeLocalizacao.localizacaoAtual);
-        }else {
-            Snackbar.make(textoExplicativo,R.string.sem_localizacao,Snackbar.LENGTH_LONG).show();
+            adicionarMarcadorUsuario(ListenerDeLocalizacao.localizacaoAtual);
+        } else {
+            Snackbar.make(textoExplicativo, R.string.sem_localizacao, Snackbar.LENGTH_LONG).show();
         }
     }
 
     //Adicinar marcador do jogador
-    public void adicionarMarcadorJogador(Location location) {
+    public void adicionarMarcadorUsuario(Location location) {
         //Se o marcador do jogador ainda não foi colocado
         if (marcadorUsuario == null) {
             if (markerOptions == null) {
                 markerOptions = new MarkerOptions();
             }
-            markerOptions//.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_jogador))
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marcador_usuario))
                     .title(getString(R.string.eu))
                     .position(new LatLng(location.getLatitude(), location.getLongitude()));
 
@@ -93,19 +94,8 @@ public class AgentesDaArea extends AppCompatActivity {
             //Se o marcador já existe, ele apenas atualiza a posição
             marcadorUsuario.setPosition(new LatLng(location.getLatitude(), location.getLongitude()));
         }
-        moverCamera(location);
+        ControleDeMapa.moverCamera(mapa, location);
     }
 
-    //Mover camera
-    public void moverCamera(Location location) {
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latLng)
-                .zoom(15)
-                .bearing(mapa.getCameraPosition().bearing)
-                        //.tilt(70)
-                .build();
-        mapa.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-    }
 }

@@ -1,6 +1,5 @@
 package br.com.agente.agentes.gps;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +13,7 @@ import android.util.Log;
 
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.activity.AgentesDaArea;
+import br.com.agente.agentes.activity.DenunciarFocos;
 
 /**
  * Created by messias on 2/22/16.
@@ -27,6 +27,7 @@ public class ListenerDeLocalizacao implements LocationListener {
     private Context context;
     public static Location localizacaoAtual = null;
     private AgentesDaArea agentesDaArea;
+    private DenunciarFocos denunciarFocos;
 
     public ListenerDeLocalizacao(Context context) {
         this.context = context;
@@ -37,12 +38,19 @@ public class ListenerDeLocalizacao implements LocationListener {
         this.agentesDaArea = agentesDaArea;
     }
 
+    public void setAgentesDaArea(DenunciarFocos denunciarFocos) {
+        this.denunciarFocos = denunciarFocos;
+    }
+
     @Override
     public void onLocationChanged(Location location) {
         localizacaoAtual = location;
-        Log.i("GPS","Localizacao atual: "+ location.getLatitude()+", "+location.getLongitude());
-        if(agentesDaArea!=null){
-            agentesDaArea.adicionarMarcadorJogador(location);
+        Log.i("GPS", "Localizacao atual: " + location.getLatitude() + ", " + location.getLongitude());
+        if (agentesDaArea != null) {
+            agentesDaArea.adicionarMarcadorUsuario(location);
+        }
+        if (denunciarFocos != null) {
+            denunciarFocos.adicionarMarcadorUsuario(location);
         }
     }
 
@@ -53,7 +61,7 @@ public class ListenerDeLocalizacao implements LocationListener {
 
     @Override
     public void onProviderEnabled(String provider) {
-        Log.i("GPS","GPS Habilitado");
+        Log.i("GPS", "GPS Habilitado");
     }
 
     @Override
