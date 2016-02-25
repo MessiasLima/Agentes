@@ -8,7 +8,8 @@
     android:layout_width="@dimen/tamanho_icone_info_window"
     android:layout_height="@dimen/tamanho_icone_info_window"
     android:src="@mipmap/ic_mosquito"
-    android:adjustViewBounds="true"/>
+    android:adjustViewBounds="true"
+    android:layout_marginRight="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

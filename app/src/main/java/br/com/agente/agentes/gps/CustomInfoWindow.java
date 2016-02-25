@@ -47,6 +47,10 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
             Download.baixarImagem(foco.getFoto(),imageView);
         }
 
+        //TODO Correção do bug de imagens atrasadas
+
         return view;
     }
+
+
 }
