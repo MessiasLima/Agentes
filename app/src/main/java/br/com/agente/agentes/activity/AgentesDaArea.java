@@ -1,7 +1,10 @@
 package br.com.agente.agentes.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -69,6 +72,10 @@ public class AgentesDaArea extends AppCompatActivity {
     private void configurarMapa() {
         if (mapa == null) {
             mapa = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa)).getMap();
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            mapa.setMyLocationEnabled(true);
         }
         if (ListenerDeLocalizacao.localizacaoAtual != null) {
             adicionarMarcadorUsuario(ListenerDeLocalizacao.localizacaoAtual);
@@ -79,7 +86,7 @@ public class AgentesDaArea extends AppCompatActivity {
 
     //Adicinar marcador do jogador
     public void adicionarMarcadorUsuario(Location location) {
-        //Se o marcador do jogador ainda não foi colocado
+   /*     //Se o marcador do jogador ainda não foi colocado
         if (marcadorUsuario == null) {
             if (markerOptions == null) {
                 markerOptions = new MarkerOptions();
@@ -93,7 +100,7 @@ public class AgentesDaArea extends AppCompatActivity {
         } else {
             //Se o marcador já existe, ele apenas atualiza a posição
             marcadorUsuario.setPosition(new LatLng(location.getLatitude(), location.getLongitude()));
-        }
+        }*/
         ControleDeMapa.moverCamera(mapa, location);
     }
 

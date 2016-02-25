@@ -14,6 +14,7 @@
     <string name="gps_desativado">GPS Desativado</string>
     <string name="nao_funciona_sem_gps">Algumas funções desse aplicativo só funcionam se o GPS estiver ligado</string>
     <string name="denunciar_foco">Deunciar foco do mosquito</string>
+    <string name="nao_existem_focos_na_area">Ninguém denunciou focos do mosquito na sua área. Seja o primeiro!</string>
     <string name="agente_não_encontrado">Esse agente não existe em nossos sistemas</string>
     <string name="falha_de_conexao">Houve uma falha de conexão com o servidor. Verifique a sua conexão com a Internet.</string>
     <string name="title_activity_mapa2">Map</string>

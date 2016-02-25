@@ -30,6 +30,7 @@ public class Download {
                     HttpURLConnection connection = (HttpURLConnection) urlImagem.openConnection();
                     InputStream input = connection.getInputStream();
                     Bitmap img = BitmapFactory.decodeStream(input);
+                    input.close();
                     connection.disconnect();
                     return img;
                 } catch (MalformedURLException e) {

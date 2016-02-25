@@ -1,7 +1,10 @@
 package br.com.agente.agentes.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +18,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import br.com.agente.agentes.R;
+import br.com.agente.agentes.bean.Foco;
+import br.com.agente.agentes.gps.CustomInfoWindow;
 import br.com.agente.agentes.gps.ListenerDeLocalizacao;
+import br.com.agente.agentes.tarefaAssincrona.RecuperarFocos;
 import br.com.agente.agentes.util.ControleDeMapa;
 import br.com.agente.agentes.util.Fonte;
 
@@ -24,9 +34,11 @@ public class DenunciarFocos extends AppCompatActivity {
 
     GoogleMap mapa;
     TextView textoExplicativo, titulo, voltar;
-    MarkerOptions markerOptions;
-    Marker marcadorUsuario;
+    MarkerOptions markerOptions, markerOptionsNovoFoco, markerOptionsFoco;
+    Marker marcadorUsuario, marcadorFoco;
     LinearLayout botaoVoltar;
+    RecuperarFocos recuperarFocos;
+    Map<String, Marker> hashMarcadoresDeFoco = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +77,20 @@ public class DenunciarFocos extends AppCompatActivity {
     private void configurarMapa() {
         if (mapa == null) {
             mapa = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.denunciar_foco_mapa)).getMap();
+            mapa.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng) {
+                    adicionarMarcadorNovoFoco(latLng);
+                }
+            });
+            mapa.setInfoWindowAdapter(new CustomInfoWindow(this));
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            mapa.setMyLocationEnabled(true);
         }
         if (ListenerDeLocalizacao.localizacaoAtual != null) {
-            adicionarMarcadorUsuario(ListenerDeLocalizacao.localizacaoAtual);
+           adicionarMarcadorUsuario(ListenerDeLocalizacao.localizacaoAtual);
         } else {
             Snackbar.make(textoExplicativo, R.string.sem_localizacao, Snackbar.LENGTH_LONG).show();
         }
@@ -76,7 +99,7 @@ public class DenunciarFocos extends AppCompatActivity {
     //Adicinar marcador do jogador
     public void adicionarMarcadorUsuario(Location location) {
         //Se o marcador do jogador ainda não foi colocado
-        if (marcadorUsuario == null) {
+        /*if (marcadorUsuario == null) {
             if (markerOptions == null) {
                 markerOptions = new MarkerOptions();
             }
@@ -89,8 +112,61 @@ public class DenunciarFocos extends AppCompatActivity {
         } else {
             //Se o marcador já existe, ele apenas atualiza a posição
             marcadorUsuario.setPosition(new LatLng(location.getLatitude(), location.getLongitude()));
-        }
+        }*/
         ControleDeMapa.moverCamera(mapa, location);
+        colocarFocosNoMapa(location);
     }
 
+    private void colocarFocosNoMapa(Location location) {
+        if (recuperarFocos == null){
+            recuperarFocos = new RecuperarFocos(this);
+            recuperarFocos.execute(location);
+        }else{
+            if (recuperarFocos.localUltimaConsulta==null){
+                recuperarFocos.execute(location);
+            }else
+            if (recuperarFocos.localUltimaConsulta.distanceTo(location)>50){
+                recuperarFocos.execute(location);
+            }
+        }
+    }
+
+    //Adicinar marcador do Foco
+    public void adicionarMarcadorNovoFoco(LatLng location) {
+        //Se o marcador do foco ainda não foi colocado
+        if (marcadorFoco == null) {
+            if (markerOptionsNovoFoco == null) {
+                markerOptionsNovoFoco = new MarkerOptions();
+            }
+            markerOptionsNovoFoco//.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marcador_usuario))
+                    //.title(getString(R.string.eu))
+                    .draggable(true)
+                    .position(location);
+
+            marcadorFoco = mapa.addMarker(markerOptionsNovoFoco);
+
+        } else {
+            //Se o marcador já existe, ele apenas atualiza a posição
+            marcadorFoco.setPosition(location);
+        }
+    }
+
+    public void manipularMarcadoresDeFoco(List<Foco> focos){
+        for (Foco f: focos){
+            if (!hashMarcadoresDeFoco.containsKey(f.getNome())){
+                if (markerOptionsFoco == null) {
+                    markerOptionsFoco = new MarkerOptions();
+                }
+                markerOptionsFoco.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mosquito))
+                        .title(f.getNome())
+                        .snippet(f.getClasse())
+                        .draggable(false)
+                        .position(new LatLng(f.getLatitude(), f.getLongitude()));
+
+                Marker mkr = mapa.addMarker(markerOptionsFoco);
+
+                hashMarcadoresDeFoco.put(f.getNome(), mkr);
+            }
+        }
+    }
 }

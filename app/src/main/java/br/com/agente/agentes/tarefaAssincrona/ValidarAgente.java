@@ -49,7 +49,10 @@ public class ValidarAgente extends AsyncTask<String, Void, Agente> {
 
     @Override
     protected Agente doInBackground(String... params) {
-        String json = Servidor.fazerGet(context, "validaragente.php?id=" + params[0]);
+        String json = Servidor.fazerGet("validaragente.php?id=" + params[0]);
+        if (json == null) {
+            return null;
+        }
         try {
             JSONObject jsonObject = new JSONObject(json);
             Agente agente = new Agente();
@@ -62,26 +65,27 @@ public class ValidarAgente extends AsyncTask<String, Void, Agente> {
             return agente;
         } catch (JSONException e) {
             e.printStackTrace();
-            if (json.trim().length()>0){
+            if (json.trim().length() > 0) {
                 return new Agente();
             }
         }
         return null;
     }
-//.replace("\\","")
+
+    //.replace("\\","")
     @Override
     protected void onPostExecute(Agente agente) {
         progressDialog.dismiss();
-        if (agente!=null){
-            if (agente.getId()==0){
-                Alerta.mandarAlerta(context,context.getString(R.string.agente_não_encontrado));
-            }else{
+        if (agente != null) {
+            if (agente.getId() == 0) {
+                Alerta.mandarAlerta(context, context.getString(R.string.agente_não_encontrado));
+            } else {
                 Intent intent = new Intent(context, DetalheAgente.class);
                 AreaDeTransferencia.agente = agente;
                 context.startActivity(intent);
             }
-        }else {
-            Alerta.mandarAlerta(context,context.getString(R.string.falha_de_conexao));
+        } else {
+            Alerta.mandarAlerta(context, context.getString(R.string.falha_de_conexao));
         }
     }
 

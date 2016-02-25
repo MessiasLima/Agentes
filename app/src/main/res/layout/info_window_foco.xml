@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+<ImageView
+    android:id="@+id/info_window_img"
+    android:layout_width="@dimen/tamanho_icone_info_window"
+    android:layout_height="@dimen/tamanho_icone_info_window"
+    android:src="@mipmap/ic_mosquito"
+    android:adjustViewBounds="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/info_window_tit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fundoMaisEscuro"
+            android:textSize="@dimen/tamanho_texto_subtitulo"
+            android:text="titulo"/>
+        <TextView
+            android:textColor="@color/fundo"
+            android:id="@+id/info_window_sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Classe"
+            android:textSize="@dimen/tamanho_texto_normal"/>
+    </LinearLayout>
+</LinearLayout>

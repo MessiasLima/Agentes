@@ -18,7 +18,7 @@ public class Servidor {
     public static final String HOST ="50.116.112.164";
     public static final int PORTA =80;
 
-    public static String fazerGet(Context context, String uri) {
+    public static String fazerGet(String uri) {
 
         String urlString =   "/~aplicativo/agentes_sistema/" + uri;
         String resultado = "";
@@ -33,7 +33,7 @@ public class Servidor {
                 resultado = resultado + linha;
             }
             input.close();
-
+            return resultado;
         } catch (MalformedURLException mue) {
             System.err.println("__URL mal formada");
             mue.printStackTrace();
@@ -47,6 +47,6 @@ public class Servidor {
         }
 
         Log.i("Debug", "Resposta do servidor: " + resultado);
-        return resultado;
+        return null;
     }
 }

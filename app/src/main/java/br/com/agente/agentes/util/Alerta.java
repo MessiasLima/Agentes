@@ -14,7 +14,6 @@ import br.com.agente.agentes.R;
 public class Alerta {
     public static void mandarAlerta(Context context, String mensagem){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(context.getString(R.string.app_name));
         builder.setMessage(mensagem);
         builder.setNeutralButton(context.getText(R.string.entendi),null);
         builder.create().show();
