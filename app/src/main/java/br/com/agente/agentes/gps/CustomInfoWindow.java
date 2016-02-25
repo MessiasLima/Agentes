@@ -3,12 +3,16 @@ package br.com.agente.agentes.gps;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
 import br.com.agente.agentes.R;
+import br.com.agente.agentes.activity.DenunciarFocos;
+import br.com.agente.agentes.bean.Foco;
+import br.com.agente.agentes.util.Download;
 
 /**
  * Created by messias on 2/25/16.
@@ -36,6 +40,12 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
 
         TextView textViewClasse= (TextView) view.findViewById(R.id.info_window_sub);
         textViewClasse.setText(marker.getSnippet());
+
+        if (DenunciarFocos.hashFocos.containsKey(marker.getTitle())){
+            Foco foco = DenunciarFocos.hashFocos.get(marker.getTitle());
+            ImageView imageView = (ImageView) view.findViewById(R.id.info_window_img);
+            Download.baixarImagem(foco.getFoto(),imageView);
+        }
 
         return view;
     }

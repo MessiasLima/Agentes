@@ -39,6 +39,7 @@ public class DenunciarFocos extends AppCompatActivity {
     LinearLayout botaoVoltar;
     RecuperarFocos recuperarFocos;
     Map<String, Marker> hashMarcadoresDeFoco = new HashMap<>();
+    public static Map<String,Foco> hashFocos = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +154,11 @@ public class DenunciarFocos extends AppCompatActivity {
 
     public void manipularMarcadoresDeFoco(List<Foco> focos){
         for (Foco f: focos){
+
+            if (!hashFocos.containsKey(f.getNome())){
+                hashFocos.put(f.getNome(),f);
+            }
+
             if (!hashMarcadoresDeFoco.containsKey(f.getNome())){
                 if (markerOptionsFoco == null) {
                     markerOptionsFoco = new MarkerOptions();
@@ -168,5 +174,12 @@ public class DenunciarFocos extends AppCompatActivity {
                 hashMarcadoresDeFoco.put(f.getNome(), mkr);
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        hashFocos.clear();
+        hashMarcadoresDeFoco.clear();
+        super.onDestroy();
     }
 }
