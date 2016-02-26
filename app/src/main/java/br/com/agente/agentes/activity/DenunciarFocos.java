@@ -39,7 +39,7 @@ public class DenunciarFocos extends AppCompatActivity {
     LinearLayout botaoVoltar;
     RecuperarFocos recuperarFocos;
     Map<String, Marker> hashMarcadoresDeFoco = new HashMap<>();
-    public static Map<String,Foco> hashFocos = new HashMap<>();
+    public static Map<String, Foco> hashFocos = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +91,7 @@ public class DenunciarFocos extends AppCompatActivity {
             mapa.setMyLocationEnabled(true);
         }
         if (ListenerDeLocalizacao.localizacaoAtual != null) {
-           adicionarMarcadorUsuario(ListenerDeLocalizacao.localizacaoAtual);
+            adicionarMarcadorUsuario(ListenerDeLocalizacao.localizacaoAtual);
         } else {
             Snackbar.make(textoExplicativo, R.string.sem_localizacao, Snackbar.LENGTH_LONG).show();
         }
@@ -119,15 +119,18 @@ public class DenunciarFocos extends AppCompatActivity {
     }
 
     private void colocarFocosNoMapa(Location location) {
-        if (recuperarFocos == null){
+        if (recuperarFocos == null) {
             recuperarFocos = new RecuperarFocos(this);
             recuperarFocos.execute(location);
-        }else{
-            if (recuperarFocos.localUltimaConsulta==null){
-                recuperarFocos.execute(location);
-            }else
-            if (recuperarFocos.localUltimaConsulta.distanceTo(location)>50){
-                recuperarFocos.execute(location);
+        } else {
+            if (recuperarFocos.localUltimaConsulta == null) {
+                if (!recuperarFocos.isExecutando()) {
+                    recuperarFocos.execute(location);
+                }
+            } else if (recuperarFocos.localUltimaConsulta.distanceTo(location) > 50) {
+                if (!recuperarFocos.isExecutando()) {
+                    recuperarFocos.execute(location);
+                }
             }
         }
     }
@@ -152,14 +155,14 @@ public class DenunciarFocos extends AppCompatActivity {
         }
     }
 
-    public void manipularMarcadoresDeFoco(List<Foco> focos){
-        for (Foco f: focos){
+    public void manipularMarcadoresDeFoco(List<Foco> focos) {
+        for (Foco f : focos) {
 
-            if (!hashFocos.containsKey(f.getNome())){
-                hashFocos.put(f.getNome(),f);
+            if (!hashFocos.containsKey(f.getNome())) {
+                hashFocos.put(f.getNome(), f);
             }
 
-            if (!hashMarcadoresDeFoco.containsKey(f.getNome())){
+            if (!hashMarcadoresDeFoco.containsKey(f.getNome())) {
                 if (markerOptionsFoco == null) {
                     markerOptionsFoco = new MarkerOptions();
                 }

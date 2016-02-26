@@ -26,11 +26,24 @@ public class RecuperarFocos extends AsyncTask<Location, Void, List<Foco>> {
 
     private DenunciarFocos denunciarFocos;
     public Location localUltimaConsulta;
+    private boolean executando;
+
+    public boolean isExecutando() {
+        return executando;
+    }
+
+    public void setExecutando(boolean executando) {
+        this.executando = executando;
+    }
 
     public RecuperarFocos(DenunciarFocos denunciarFocos) {
         this.denunciarFocos = denunciarFocos;
     }
 
+    @Override
+    protected void onPreExecute() {
+        setExecutando(true);
+    }
 
     @Override
     protected List<Foco> doInBackground(Location... params) {
@@ -69,5 +82,6 @@ public class RecuperarFocos extends AsyncTask<Location, Void, List<Foco>> {
         }else{
             denunciarFocos.manipularMarcadoresDeFoco(focos);
         }
+        setExecutando(true);
     }
 }
