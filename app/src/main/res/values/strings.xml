@@ -24,6 +24,7 @@
     <string name="telefones">Telefones</string>
     <string name="falha_imagem">Não foi possível baixar a foto do agente</string>
     <string name="voltar">Voltar</string>
+    <string name="falta_permissao_location">Algumas funcionalidades desse aplicativo requerem acesso a sua localização. Por favor, considere dar apermissão de localização nas configurações</string>
     <string name="hint_matricula_agente">Matrícula do agente aqui</string>
     <string name="texto_explicativo_denunciar_foco">Aqui você pode denunciar focos de criação do mosquitos Aedes Aegypti. Toque no lugar e preencha as informações pedidas para fazer a denúncia.</string>
     <string name="texto_explicativo_consultar_agente">É importante ter a  certeza que você está recebendo um  agente de saúde real, dessa forma disponibilizamos essa ferramenta para você  conferir as informações do agente e se sentir seguro  ao deixá-lo entrar em sua  residência. \n \n Caso as informações não sejam encontradas, sugerimos que você ligue para a secretaria de saúde  de seu municipio para a conferência precisa dos dados.</string>

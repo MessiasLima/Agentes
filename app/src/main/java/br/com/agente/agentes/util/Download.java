@@ -24,21 +24,7 @@ public class Download {
         new AsyncTask<Void,Void,Bitmap>(){
             @Override
             protected Bitmap doInBackground(Void... params) {
-                try {
-                    Log.i("Download imagem", url);
-                    URL urlImagem = new URL(url);
-                    HttpURLConnection connection = (HttpURLConnection) urlImagem.openConnection();
-                    InputStream input = connection.getInputStream();
-                    Bitmap img = BitmapFactory.decodeStream(input);
-                    input.close();
-                    connection.disconnect();
-                    return img;
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
+               return baixarImagemSincrona(url);
             }
 
             @Override
@@ -52,6 +38,24 @@ public class Download {
         }.execute();
 
 
+        return null;
+    }
+
+    public static Bitmap baixarImagemSincrona(String url) {
+        try {
+            Log.i("Download imagem", url);
+            URL urlImagem = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) urlImagem.openConnection();
+            InputStream input = connection.getInputStream();
+            Bitmap img = BitmapFactory.decodeStream(input);
+            input.close();
+            connection.disconnect();
+            return img;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

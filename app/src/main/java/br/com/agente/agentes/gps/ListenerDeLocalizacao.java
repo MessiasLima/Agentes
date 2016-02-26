@@ -14,6 +14,7 @@ import android.util.Log;
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.activity.AgentesDaArea;
 import br.com.agente.agentes.activity.DenunciarFocos;
+import br.com.agente.agentes.util.Alerta;
 
 /**
  * Created by messias on 2/22/16.
@@ -66,20 +67,6 @@ public class ListenerDeLocalizacao implements LocationListener {
 
     @Override
     public void onProviderDisabled(String provider) {
-
-        if (provider.equals(LocationManager.GPS_PROVIDER)) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle(R.string.gps_desativado).setMessage(context.getString(R.string.app_name) + " " + context.getString(R.string.nao_funciona_sem_gps));
-            builder.setNegativeButton(R.string.ignorar, null);
-            builder.setPositiveButton("Ativar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                    context.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                }
-            });
-            builder.setCancelable(true).create().show();
-
-        }
+        Alerta.alertaGPS(context,provider);
     }
 }

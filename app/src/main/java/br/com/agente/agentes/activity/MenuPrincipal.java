@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.gps.ListenerDeLocalizacao;
+import br.com.agente.agentes.util.Alerta;
 import br.com.agente.agentes.util.Fonte;
 
 public class MenuPrincipal extends AppCompatActivity {
@@ -55,12 +56,13 @@ public class MenuPrincipal extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         listenerDeLocalizacao = new ListenerDeLocalizacao(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Alerta.mandarAlerta(this, getString(R.string.falta_permissao_location));
             return;
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 30 * 1000, 5, listenerDeLocalizacao);
         try {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 30 * 1000, 5, listenerDeLocalizacao);
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
@@ -112,7 +114,9 @@ public class MenuPrincipal extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Alerta.mandarAlerta(this, getString(R.string.falta_permissao_location));
             return;
         }
         locationManager.removeUpdates(listenerDeLocalizacao);

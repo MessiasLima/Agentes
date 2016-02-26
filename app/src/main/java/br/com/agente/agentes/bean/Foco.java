@@ -1,5 +1,12 @@
 package br.com.agente.agentes.bean;
 
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+
+import com.google.android.gms.maps.model.Marker;
+
+import br.com.agente.agentes.util.Download;
+
 /**
  * Created by messias on 2/25/16.
  * @author Messias Lima
@@ -13,6 +20,15 @@ public class Foco {
     private double longitude;
     private String foto;
     private String classe;
+    private Bitmap fotoBitmap;
+
+    public Bitmap getFotoBitmap() {
+        return fotoBitmap;
+    }
+
+    public void setFotoBitmap(Bitmap fotoBitmap) {
+        this.fotoBitmap = fotoBitmap;
+    }
 
     public int getId() {
         return id;
@@ -60,5 +76,20 @@ public class Foco {
 
     public void setClasse(String classe) {
         this.classe = classe;
+    }
+
+    public void atualizarMarcador(final Marker marker) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                setFotoBitmap(Download.baixarImagemSincrona(getFoto()));
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                marker.showInfoWindow();
+            }
+        }.execute();
     }
 }

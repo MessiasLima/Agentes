@@ -22,9 +22,9 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
     View view;
     Activity context;
 
-    public CustomInfoWindow(Activity context){
+    public CustomInfoWindow(Activity context) {
         this.context = context;
-        view = context.getLayoutInflater().inflate(R.layout.info_window_foco,null);
+        view = context.getLayoutInflater().inflate(R.layout.info_window_foco, null);
     }
 
     @Override
@@ -35,16 +35,22 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
     @Override
     public View getInfoContents(Marker marker) {
 
+        ImageView imageView = (ImageView) view.findViewById(R.id.info_window_img);
+        imageView.setImageResource(R.mipmap.ic_mosquito);
+
         TextView textViewNome = (TextView) view.findViewById(R.id.info_window_tit);
         textViewNome.setText(marker.getTitle());
 
-        TextView textViewClasse= (TextView) view.findViewById(R.id.info_window_sub);
+        TextView textViewClasse = (TextView) view.findViewById(R.id.info_window_sub);
         textViewClasse.setText(marker.getSnippet());
 
-        if (DenunciarFocos.hashFocos.containsKey(marker.getTitle())){
+        if (DenunciarFocos.hashFocos.containsKey(marker.getTitle())) {
             Foco foco = DenunciarFocos.hashFocos.get(marker.getTitle());
-            ImageView imageView = (ImageView) view.findViewById(R.id.info_window_img);
-            Download.baixarImagem(foco.getFoto(),imageView);
+            if (foco.getFotoBitmap() == null) {
+                foco.atualizarMarcador(marker);
+            } else {
+                imageView.setImageBitmap(foco.getFotoBitmap());
+            }
         }
 
         //TODO Correção do bug de imagens atrasadas
