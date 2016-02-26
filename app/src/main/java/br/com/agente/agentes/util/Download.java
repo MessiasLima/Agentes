@@ -43,13 +43,14 @@ public class Download {
 
     public static Bitmap baixarImagemSincrona(String url) {
         try {
-            Log.i("Download imagem", url);
+
             URL urlImagem = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) urlImagem.openConnection();
             InputStream input = connection.getInputStream();
             Bitmap img = BitmapFactory.decodeStream(input);
             input.close();
             connection.disconnect();
+            Log.i("Download imagem", url);
             return img;
         } catch (MalformedURLException e) {
             e.printStackTrace();

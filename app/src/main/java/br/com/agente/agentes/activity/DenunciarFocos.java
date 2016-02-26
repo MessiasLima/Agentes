@@ -1,6 +1,7 @@
 package br.com.agente.agentes.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.design.widget.Snackbar;
@@ -27,6 +28,7 @@ import br.com.agente.agentes.bean.Foco;
 import br.com.agente.agentes.gps.CustomInfoWindow;
 import br.com.agente.agentes.gps.ListenerDeLocalizacao;
 import br.com.agente.agentes.tarefaAssincrona.RecuperarFocos;
+import br.com.agente.agentes.util.AreaDeTransferencia;
 import br.com.agente.agentes.util.ControleDeMapa;
 import br.com.agente.agentes.util.Fonte;
 
@@ -89,6 +91,16 @@ public class DenunciarFocos extends AppCompatActivity {
                 return;
             }
             mapa.setMyLocationEnabled(true);
+            mapa.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    String nome = marker.getTitle();
+                    if (nome!=null){
+                        AreaDeTransferencia.foco = hashFocos.get(nome);
+                        startActivity(new Intent(DenunciarFocos.this,DetalheFoco.class));
+                    }
+                }
+            });
         }
         if (ListenerDeLocalizacao.localizacaoAtual != null) {
             adicionarMarcadorUsuario(ListenerDeLocalizacao.localizacaoAtual);

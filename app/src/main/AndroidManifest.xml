@@ -48,6 +48,7 @@
         <activity
             android:name=".activity.Telefones"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.DetalheFoco"></activity>
     </application>
 
 </manifest>
