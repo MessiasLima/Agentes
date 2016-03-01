@@ -95,9 +95,12 @@ public class DenunciarFocos extends AppCompatActivity {
                 @Override
                 public void onInfoWindowClick(Marker marker) {
                     String nome = marker.getTitle();
-                    if (nome!=null){
+                    if (nome != null && nome.equals("Eu")) {
+                        startActivity(new Intent(DenunciarFocos.this, NovoFoco.class));
+                        NovoFoco.marcadorNovoFoco = marker;
+                    } else {
                         AreaDeTransferencia.foco = hashFocos.get(nome);
-                        startActivity(new Intent(DenunciarFocos.this,DetalheFoco.class));
+                        startActivity(new Intent(DenunciarFocos.this, DetalheFoco.class));
                     }
                 }
             });
@@ -155,7 +158,7 @@ public class DenunciarFocos extends AppCompatActivity {
                 markerOptionsNovoFoco = new MarkerOptions();
             }
             markerOptionsNovoFoco//.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marcador_usuario))
-                    //.title(getString(R.string.eu))
+                    .title(getString(R.string.eu))
                     .draggable(true)
                     .position(location);
 
@@ -165,6 +168,7 @@ public class DenunciarFocos extends AppCompatActivity {
             //Se o marcador já existe, ele apenas atualiza a posição
             marcadorFoco.setPosition(location);
         }
+        marcadorFoco.showInfoWindow();
     }
 
     public void manipularMarcadoresDeFoco(List<Foco> focos) {

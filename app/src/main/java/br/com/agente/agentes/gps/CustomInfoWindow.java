@@ -16,6 +16,9 @@ import br.com.agente.agentes.util.Download;
 
 /**
  * Created by messias on 2/25/16.
+ * @author Messias Lima
+ * @since 25/02/2016
+ * @version 1.0
  */
 public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
 
@@ -24,7 +27,7 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
 
     public CustomInfoWindow(Activity context) {
         this.context = context;
-        view = context.getLayoutInflater().inflate(R.layout.info_window_foco, null);
+
     }
 
     @Override
@@ -34,6 +37,13 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
 
     @Override
     public View getInfoContents(Marker marker) {
+
+        if (marker.getTitle().equals("Eu")){
+            view = context.getLayoutInflater().inflate(R.layout.info_window_novo_foco, null);
+            return view;
+        }
+
+        view = context.getLayoutInflater().inflate(R.layout.info_window_foco, null);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.info_window_img);
         imageView.setImageResource(R.mipmap.ic_mosquito);
@@ -52,8 +62,6 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
                 imageView.setImageBitmap(foco.getFotoBitmap());
             }
         }
-
-        //TODO Correção do bug de imagens atrasadas
 
         return view;
     }

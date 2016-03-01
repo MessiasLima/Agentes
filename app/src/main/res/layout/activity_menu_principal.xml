@@ -48,7 +48,7 @@
             android:textSize="@dimen/tamanho_texto_titulo" />
     </LinearLayout>
 
-    <LinearLayout
+ <!--   <LinearLayout
         android:id="@+id/botao_agentes_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="@string/agentes_da_area"
             android:textSize="@dimen/tamanho_texto_titulo" />
-    </LinearLayout>
+    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/botao_denunciar_focos"

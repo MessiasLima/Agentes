@@ -12,19 +12,21 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/activity_vertical_margin">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ProgressBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_margin="20dp"/>
+                    android:layout_margin="20dp" />
+
                 <ImageView
                     android:id="@+id/img_detalhe_foco"
                     android:layout_width="match_parent"
@@ -33,25 +35,42 @@
             </RelativeLayout>
 
 
-
             <LinearLayout
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/fundoMaisEscuro"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/activity_horizontal_margin">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/nome_foco"
+                    android:textSize="@dimen/tamanho_texto_subtitulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="@string/nome" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nome" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/nome_foco_dinamico"
+                    android:textSize="@dimen/tamanho_texto_subtitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nome"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/tipo_foco"
+                    android:textSize="@dimen/tamanho_texto_subtitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tipo" />
+
+                <TextView
+                    android:id="@+id/tipo_foco_dinamico"
+                    android:textSize="@dimen/tamanho_texto_subtitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tipo" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

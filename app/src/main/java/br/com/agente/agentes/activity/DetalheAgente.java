@@ -9,12 +9,14 @@ import br.com.agente.agentes.R;
 import br.com.agente.agentes.bean.Agente;
 import br.com.agente.agentes.util.AreaDeTransferencia;
 import br.com.agente.agentes.util.Download;
+import br.com.agente.agentes.util.Fonte;
 
 public class DetalheAgente extends AppCompatActivity {
 
     private ImageView imageViewFoto;
-    private TextView textViewNome;
-    private TextView textViewMatricula;
+    private TextView textViewNome, textViewMatricula, nomeAgente, matriculaAgente;
+
+    //TODO consertar layout do detalhe do agente
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,17 @@ public class DetalheAgente extends AppCompatActivity {
 
     private void iniciarComponentes() {
         imageViewFoto = (ImageView) findViewById(R.id.image_view_foto);
+
         textViewMatricula = (TextView) findViewById(R.id.text_view_matricula_agente);
+        Fonte.setarFonteTextos(textViewMatricula);
+
         textViewNome = (TextView) findViewById(R.id.text_view_nome_agente);
+        Fonte.setarFonteTextos(textViewNome);
+
+        nomeAgente = (TextView) findViewById(R.id.nome_agente);
+        Fonte.setarFonteTitulo(nomeAgente);
+
+        matriculaAgente = (TextView) findViewById(R.id.matricula_agente);
+        Fonte.setarFonteTitulo(matriculaAgente);
     }
 }

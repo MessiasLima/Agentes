@@ -35,6 +35,18 @@
 
         <activity
             android:name=".activity.MenuPrincipal"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DenunciarFocos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Telefones"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DetalheFoco"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Splash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,13 +54,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.DenunciarFocos"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.Telefones"
-            android:screenOrientation="portrait" />
-        <activity android:name=".activity.DetalheFoco"></activity>
+        <activity android:name=".activity.NovoFoco"></activity>
     </application>
 
 </manifest>

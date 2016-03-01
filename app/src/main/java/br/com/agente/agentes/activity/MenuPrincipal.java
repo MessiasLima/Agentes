@@ -38,6 +38,7 @@ public class MenuPrincipal extends AppCompatActivity {
     LocationManager locationManager;
     static ListenerDeLocalizacao listenerDeLocalizacao;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +82,7 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
-        botaoAgentesAreaTexto = (TextView) findViewById(R.id.botao_agentes_area_texto);
+       /* botaoAgentesAreaTexto = (TextView) findViewById(R.id.botao_agentes_area_texto);
         Fonte.setarFonteTitulo(botaoAgentesAreaTexto);
         botaoAgentesArea = (LinearLayout) findViewById(R.id.botao_agentes_area);
         botaoAgentesArea.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +90,7 @@ public class MenuPrincipal extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(MenuPrincipal.this, AgentesDaArea.class));
             }
-        });
+        });*/
 
         botaoDenuciarFocosTexto = (TextView) findViewById(R.id.botao_denunciar_focos_texto);
         Fonte.setarFonteTitulo(botaoDenuciarFocosTexto);

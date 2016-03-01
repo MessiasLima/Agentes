@@ -32,6 +32,7 @@ public class ConsultarAgente extends AppCompatActivity {
     private void iniciarComponentes(){
         textoExplicativo = (TextView) findViewById(R.id.texto_explicativo_consultar_agente);
         Fonte.setarFonteTextos(textoExplicativo);
+
         editTextMatricula = (EditText) findViewById(R.id.edit_text_matricula);
 
         botaoConsultarTexto= (TextView) findViewById(R.id.botao_consultar_main_texto);

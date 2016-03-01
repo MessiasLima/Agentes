@@ -6,8 +6,10 @@
     <string name="ok">Ok</string>
     <string name="google_app_id">916605106496</string>
     <string name="entendi">Entendi</string>
+    <string name="toque_para_denunciar">Toque aqui para denunciar um novo foco</string>
     <string name="nome">Nome</string>
     <string name="matricula">Matricula</string>
+    <string name="tipo">Tipo</string>
     <string name="sem_localizacao">Sua localização ainda não está disponível</string>
     <string name="ignorar">Ignorar</string>
     <string name="eu">Eu</string>
