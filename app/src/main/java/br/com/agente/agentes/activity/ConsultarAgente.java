@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.tarefaAssincrona.ValidarAgente;
 import br.com.agente.agentes.util.Fonte;
@@ -25,7 +28,7 @@ public class ConsultarAgente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.consultar_agente);
+        setContentView(R.layout.consultar_agente_externo);
         iniciarComponentes();
     }
 
@@ -64,6 +67,10 @@ public class ConsultarAgente extends AppCompatActivity {
                 finish();
             }
         });
+
+        AdView adView = (AdView) findViewById(R.id.adView_consultar_agente);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     public void validarAgente(){

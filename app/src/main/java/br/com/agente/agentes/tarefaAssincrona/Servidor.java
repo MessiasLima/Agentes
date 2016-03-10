@@ -12,18 +12,22 @@ import java.net.URLConnection;
 
 /**
  * Created by messias on 2/19/16.
+ * @author Messias Lima
+ *
  */
 public class Servidor {
 
-    public static final String HOST ="50.116.112.164";
-    public static final int PORTA =80;
+    public static final String HOST = "50.116.112.164";
+    public static final int PORTA = 80;
+    public static final String CAMINHO_DO_SISTEMA = "/~aplicativo/agentes_sistema/";
 
     public static String fazerGet(String uri) {
 
-        String urlString =   "/~aplicativo/agentes_sistema/" + uri;
+
+        String urlString = "/~aplicativo/agentes_sistema/" + uri;
         String resultado = "";
         try {
-            URL url = new URL("http",HOST,PORTA,urlString);
+            URL url = new URL("http", HOST, PORTA, urlString);
             Log.i("Debug", urlString);
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(1000 * 10);

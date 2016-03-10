@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -75,6 +77,10 @@ public class DenunciarFocos extends AppCompatActivity {
         Fonte.setarFonteTitulo(voltar);
 
         configurarMapa();
+
+        AdView adView = (AdView) findViewById(R.id.adView_denunciar_foco);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     private void configurarMapa() {
@@ -98,6 +104,7 @@ public class DenunciarFocos extends AppCompatActivity {
                     if (nome != null && nome.equals("Eu")) {
                         startActivity(new Intent(DenunciarFocos.this, NovoFoco.class));
                         NovoFoco.marcadorNovoFoco = marker;
+                        marker.remove();
                     } else {
                         AreaDeTransferencia.foco = hashFocos.get(nome);
                         startActivity(new Intent(DenunciarFocos.this, DetalheFoco.class));
@@ -130,24 +137,28 @@ public class DenunciarFocos extends AppCompatActivity {
             marcadorUsuario.setPosition(new LatLng(location.getLatitude(), location.getLongitude()));
         }*/
         ControleDeMapa.moverCamera(mapa, location);
-        colocarFocosNoMapa(location);
+        colocarFocosNoMapa(location, false);
     }
 
-    private void colocarFocosNoMapa(Location location) {
-        if (recuperarFocos == null) {
-            recuperarFocos = new RecuperarFocos(this);
-            recuperarFocos.execute(location);
-        } else {
-            if (recuperarFocos.localUltimaConsulta == null) {
-                if (!recuperarFocos.isExecutando()) {
-                    recuperarFocos.execute(location);
-                }
-            } else if (recuperarFocos.localUltimaConsulta.distanceTo(location) > 50) {
-                if (!recuperarFocos.isExecutando()) {
-                    recuperarFocos.execute(location);
-                }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (ListenerDeLocalizacao.localizacaoAtual != null) {
+            colocarFocosNoMapa(ListenerDeLocalizacao.localizacaoAtual, true);
+        }
+    }
+
+    private void colocarFocosNoMapa(Location location, boolean ignorarUltimaLocalizacao) {
+        //if (recuperarFocos == null) {
+        recuperarFocos = new RecuperarFocos(this);
+        //   recuperarFocos.execute(location);
+        // } else {
+        if (ignorarUltimaLocalizacao || recuperarFocos.localUltimaConsulta == null || recuperarFocos.localUltimaConsulta.distanceTo(location) > 50) {
+            if (!recuperarFocos.isExecutando()) {
+                recuperarFocos.execute(location);
             }
         }
+        //}
     }
 
     //Adicinar marcador do Foco
@@ -184,7 +195,7 @@ public class DenunciarFocos extends AppCompatActivity {
                 }
                 markerOptionsFoco.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mosquito))
                         .title(f.getNome())
-                        .snippet(f.getClasse())
+                        .snippet(f.getDescricao())
                         .draggable(false)
                         .position(new LatLng(f.getLatitude(), f.getLongitude()));
 

@@ -8,27 +8,51 @@
     <string name="entendi">Entendi</string>
     <string name="toque_para_denunciar">Toque aqui para denunciar um novo foco</string>
     <string name="nome">Nome</string>
+    <string name="rua">Rua</string>
+    <string name="descricao">Descrição</string>
     <string name="matricula">Matricula</string>
     <string name="tipo">Tipo</string>
     <string name="sem_localizacao">Sua localização ainda não está disponível</string>
+    <string name="preencha_tudo">Preencha todos os campos antes de confirmar</string>
     <string name="ignorar">Ignorar</string>
     <string name="eu">Eu</string>
     <string name="gps_desativado">GPS Desativado</string>
     <string name="nao_funciona_sem_gps">Algumas funções desse aplicativo só funcionam se o GPS estiver ligado</string>
-    <string name="denunciar_foco">Deunciar foco do mosquito</string>
+    <string name="denunciar_foco">Denunciar foco do mosquito</string>
     <string name="nao_existem_focos_na_area">Ninguém denunciou focos do mosquito na sua área. Seja o primeiro!</string>
     <string name="agente_não_encontrado">Esse agente não existe em nossos sistemas</string>
     <string name="falha_de_conexao">Houve uma falha de conexão com o servidor. Verifique a sua conexão com a Internet.</string>
     <string name="title_activity_mapa2">Map</string>
+    <string-array name="lista_tipos">A,B,C</string-array>
     <string name="consultar">Consultar</string>
     <string name="agentes_da_area">Agentes da área</string>
     <string name="denunciar_focos">Denunciar focos</string>
+    <string name="confirmar">Confirmar</string>
     <string name="telefones">Telefones</string>
     <string name="falha_imagem">Não foi possível baixar a foto do agente</string>
     <string name="voltar">Voltar</string>
+    <string name="novo_foco">Novo Foco</string>
+    <string name="enviando_dados">Enviando dados</string>
+    <string name="envio_sucesso">Operação realizada com sucesso</string>
     <string name="falta_permissao_location">Algumas funcionalidades desse aplicativo requerem acesso a sua localização. Por favor, considere dar apermissão de localização nas configurações</string>
     <string name="hint_matricula_agente">Matrícula do agente aqui</string>
     <string name="texto_explicativo_denunciar_foco">Aqui você pode denunciar focos de criação do mosquitos Aedes Aegypti. Toque no lugar e preencha as informações pedidas para fazer a denúncia.</string>
     <string name="texto_explicativo_consultar_agente">É importante ter a  certeza que você está recebendo um  agente de saúde real, dessa forma disponibilizamos essa ferramenta para você  conferir as informações do agente e se sentir seguro  ao deixá-lo entrar em sua  residência. \n \n Caso as informações não sejam encontradas, sugerimos que você ligue para a secretaria de saúde  de seu municipio para a conferência precisa dos dados.</string>
     <string name="texto_explicativo_agentes_da_area">Nesta tela, você pode saber, baseado em sua localização, os agentes que atuam na área de sua residência. Clique na foto do agente para ver as informações de nome e matrícula.</string>
+    <string name="title_activity_teste_ad">TesteAD</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_world">Hello world!</string>
+    <!-- -
+        This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="banner_ad_teste">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_ad_menu_principal">ca-app-pub-3124052078905914/6990171385</string>
+    <string name="banner_ad_consultar_agente">ca-app-pub-3124052078905914/3757503383</string>
+    <string name="banner_ad_denunciar_foco">ca-app-pub-3124052078905914/4198155387</string>
+    <string name="banner_ad_detalhe_foco">ca-app-pub-3124052078905914/7151621784</string>
+    <string name="banner_ad_detalhe_agente">ca-app-pub-3124052078905914/2581821387</string>
+    <string name="banner_ad_telefones">ca-app-pub-3124052078905914/4058554586</string>
 </resources>

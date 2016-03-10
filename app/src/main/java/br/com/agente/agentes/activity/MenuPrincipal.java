@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.gps.ListenerDeLocalizacao;
 import br.com.agente.agentes.util.Alerta;
@@ -42,7 +45,7 @@ public class MenuPrincipal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_principal);
+        setContentView(R.layout.activity_menu_principal_externo);
         iniciarComponentes();
         ativarGPS();
     }
@@ -111,6 +114,10 @@ public class MenuPrincipal extends AppCompatActivity {
                 startActivity(new Intent(MenuPrincipal.this, Telefones.class));
             }
         });
+
+        AdView adView = (AdView) findViewById(R.id.adView_menu_principal);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override

@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.bean.Foco;
 import br.com.agente.agentes.util.AreaDeTransferencia;
@@ -20,7 +23,7 @@ public class DetalheFoco extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalhe_foco);
+        setContentView(R.layout.activity_detalhe_foco_externa);
         foco = AreaDeTransferencia.foco;
         AreaDeTransferencia.foco = null;
         iniciarComponentes();
@@ -46,7 +49,11 @@ public class DetalheFoco extends AppCompatActivity {
 
         tipoFoco =  (TextView) findViewById(R.id.tipo_foco_dinamico);
         Fonte.setarFonteTextos(tipoFoco);
-        tipoFoco.setText(foco.getClasse());
+        tipoFoco.setText(foco.getDescricao());
+
+        AdView adView = (AdView) findViewById(R.id.adView_detalhe_foco);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
 }

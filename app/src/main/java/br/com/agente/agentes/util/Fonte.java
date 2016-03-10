@@ -2,6 +2,7 @@ package br.com.agente.agentes.util;
 
 import android.graphics.Typeface;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -16,7 +17,17 @@ public class Fonte {
         view.setTypeface(myTypeface);
     }
 
+    public static void setarFonteTitulo(EditText view){
+        Typeface myTypeface = Typeface.createFromAsset(view.getContext().getAssets(), "fonts/antonio-light.ttf");
+        view.setTypeface(myTypeface);
+    }
+
     public static void setarFonteTextos(TextView view){
+        Typeface myTypeface = Typeface.createFromAsset(view.getContext().getAssets(), "fonts/mentone-semibol.otf");
+        view.setTypeface(myTypeface);
+    }
+
+    public static void setarFonteTextos(EditText view){
         Typeface myTypeface = Typeface.createFromAsset(view.getContext().getAssets(), "fonts/mentone-semibol.otf");
         view.setTypeface(myTypeface);
     }

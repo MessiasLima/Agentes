@@ -24,9 +24,9 @@ import br.com.agente.agentes.util.Alerta;
  */
 public class RecuperarFocos extends AsyncTask<Location, Void, List<Foco>> {
 
-    private DenunciarFocos denunciarFocos;
-    public Location localUltimaConsulta;
-    private boolean executando;
+    public static DenunciarFocos denunciarFocos;
+    public static Location localUltimaConsulta;
+    public static boolean executando;
 
     public boolean isExecutando() {
         return executando;
@@ -62,7 +62,7 @@ public class RecuperarFocos extends AsyncTask<Location, Void, List<Foco>> {
                     foco.setLatitude(jsonObject.getDouble("latitude"));
                     foco.setLongitude(jsonObject.getDouble("longitude"));
                     foco.setFoto(jsonObject.getString("foto"));
-                    foco.setClasse(jsonObject.getString("classe"));
+                    foco.setDescricao(jsonObject.getString("classe"));
                     focos.add(foco);
                 }
                 localUltimaConsulta = params[0];
@@ -82,6 +82,6 @@ public class RecuperarFocos extends AsyncTask<Location, Void, List<Foco>> {
         }else{
             denunciarFocos.manipularMarcadoresDeFoco(focos);
         }
-        setExecutando(true);
+        setExecutando(false);
     }
 }

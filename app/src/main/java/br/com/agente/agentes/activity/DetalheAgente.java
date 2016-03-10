@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.bean.Agente;
 import br.com.agente.agentes.util.AreaDeTransferencia;
@@ -21,7 +24,7 @@ public class DetalheAgente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalhe_agente);
+        setContentView(R.layout.activity_detalhe_agente_externo);
         iniciarComponentes();
         mostrarInformacoes();
     }
@@ -48,5 +51,9 @@ public class DetalheAgente extends AppCompatActivity {
 
         matriculaAgente = (TextView) findViewById(R.id.matricula_agente);
         Fonte.setarFonteTitulo(matriculaAgente);
+
+        AdView adView = (AdView) findViewById(R.id.adView_detalhe_agente);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 }

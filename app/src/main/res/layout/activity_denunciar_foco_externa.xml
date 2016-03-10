@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include layout="@layout/activity_denunciar_focos" />
 
+
     <RelativeLayout
+        android:id="@+id/barra_inferior_denunciar_foco"
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,6 +17,8 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:background="@color/fundo">
+
+
 
         <LinearLayout
             android:orientation="horizontal"
@@ -52,6 +58,15 @@
                 android:text="@string/voltar"/>
         </LinearLayout>
 
+
     </RelativeLayout>
 
+    <com.google.android.gms.ads.AdView
+        android:layout_above="@id/barra_inferior_denunciar_foco"
+        android:id="@+id/adView_denunciar_foco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_ad_teste" />
 </RelativeLayout>

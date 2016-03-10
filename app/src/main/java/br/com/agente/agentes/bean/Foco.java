@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 
 import com.google.android.gms.maps.model.Marker;
 
+import java.io.File;
+
 import br.com.agente.agentes.util.Download;
 
 /**
@@ -19,8 +21,17 @@ public class Foco {
     private double latitude;
     private double longitude;
     private String foto;
-    private String classe;
+    private String descricao;
     private Bitmap fotoBitmap;
+    private File fotoFile;
+
+    public File getFotoFile() {
+        return fotoFile;
+    }
+
+    public void setFotoFile(File fotoFile) {
+        this.fotoFile = fotoFile;
+    }
 
     public Bitmap getFotoBitmap() {
         return fotoBitmap;
@@ -70,12 +81,12 @@ public class Foco {
         this.foto = foto;
     }
 
-    public String getClasse() {
-        return classe;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setClasse(String classe) {
-        this.classe = classe;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public void atualizarMarcador(final Marker marker) {
