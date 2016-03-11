@@ -16,6 +16,8 @@ import br.com.agente.agentes.R;
  * @version 1.0
  */
 public class Alerta {
+
+
     public static void mandarAlerta(Context context, String mensagem){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(mensagem);

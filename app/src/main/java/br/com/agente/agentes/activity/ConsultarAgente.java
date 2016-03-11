@@ -13,6 +13,7 @@ import com.google.android.gms.ads.AdView;
 
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.tarefaAssincrona.ValidarAgente;
+import br.com.agente.agentes.util.Alerta;
 import br.com.agente.agentes.util.Fonte;
 
 public class ConsultarAgente extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class ConsultarAgente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consultar_agente_externo);
         iniciarComponentes();
+        Alerta.mandarAlerta(this,"Essa função está em fase de coleta de dados e pode não conter todas as informações solicidadas. Em caso de duvida, para a sua segurança entre em contato com centro de Zoonoses do seu municipio.");
     }
 
     private void iniciarComponentes(){

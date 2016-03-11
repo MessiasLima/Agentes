@@ -137,7 +137,7 @@ public class DenunciarFocos extends AppCompatActivity {
             marcadorUsuario.setPosition(new LatLng(location.getLatitude(), location.getLongitude()));
         }*/
         ControleDeMapa.moverCamera(mapa, location);
-        colocarFocosNoMapa(location, false);
+        //colocarFocosNoMapa(location, false);
     }
 
     @Override

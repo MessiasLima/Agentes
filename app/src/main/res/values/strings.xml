@@ -5,6 +5,8 @@
     <string name="obtendo_dados">Obtendo dados...</string>
     <string name="ok">Ok</string>
     <string name="google_app_id">916605106496</string>
+    <string name="google_map_api_debug">AIzaSyDbirXBUZJVqzOZ-6H9vkMpD_RWYrh9Phw</string>
+    <string name="google_map_api_release">AIzaSyAEzrlgyqZ78lhy-5qQw2ItvOln3HyUa6o</string>
     <string name="entendi">Entendi</string>
     <string name="toque_para_denunciar">Toque aqui para denunciar um novo foco</string>
     <string name="nome">Nome</string>
@@ -37,7 +39,9 @@
     <string name="falta_permissao_location">Algumas funcionalidades desse aplicativo requerem acesso a sua localização. Por favor, considere dar apermissão de localização nas configurações</string>
     <string name="hint_matricula_agente">Matrícula do agente aqui</string>
     <string name="texto_explicativo_denunciar_foco">Aqui você pode denunciar focos de criação do mosquitos Aedes Aegypti. Toque no lugar e preencha as informações pedidas para fazer a denúncia.</string>
-    <string name="texto_explicativo_consultar_agente">É importante ter a  certeza que você está recebendo um  agente de saúde real, dessa forma disponibilizamos essa ferramenta para você  conferir as informações do agente e se sentir seguro  ao deixá-lo entrar em sua  residência. \n \n Caso as informações não sejam encontradas, sugerimos que você ligue para a secretaria de saúde  de seu municipio para a conferência precisa dos dados.</string>
+
+    <string name="texto_explicativo_consultar_agente">É importante ter a  certeza que você está recebendo um  agente de saúde real. Além da farda, você pode utilizar a ferramenta que disponibilizamos para conferir as informações do agente. \n \n Caso as informações não sejam encontradas, sugerimos que você ligue para o centro de Zoonoses de seu municipio para a conferência precisa dos dados. Telefones abaixo.</string>
+
     <string name="texto_explicativo_agentes_da_area">Nesta tela, você pode saber, baseado em sua localização, os agentes que atuam na área de sua residência. Clique na foto do agente para ver as informações de nome e matrícula.</string>
     <string name="title_activity_teste_ad">TesteAD</string>
 
@@ -49,6 +53,7 @@
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
     <string name="banner_ad_teste">ca-app-pub-3940256099942544/6300978111</string>
+
     <string name="banner_ad_menu_principal">ca-app-pub-3124052078905914/6990171385</string>
     <string name="banner_ad_consultar_agente">ca-app-pub-3124052078905914/3757503383</string>
     <string name="banner_ad_denunciar_foco">ca-app-pub-3124052078905914/4198155387</string>

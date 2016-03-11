@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margem_vertical_botao"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/nome_telefones_list_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tamanho_texto_subtitulo"
+        android:text="Nome"/>
+
+    <TextView
+        android:id="@+id/telefone_telefones_list_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tamanho_texto_normal"
+        android:text="Telefone" />
+
+</LinearLayout>

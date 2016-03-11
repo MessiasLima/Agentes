@@ -1,12 +1,15 @@
 package br.com.agente.agentes.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +25,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.bean.Foco;
@@ -65,10 +69,27 @@ public class NovoFoco extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-                    fileFoto = File.createTempFile("agentes"+System.currentTimeMillis(),".jpg",Environment.getExternalStorageDirectory());
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(fileFoto));
-                    startActivityForResult(intent, 0);
+
+
+                    // Se não possui permissão
+                    if (ActivityCompat.checkSelfPermission(NovoFoco.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        // Verifica se já mostramos o alerta e o usuário negou na 1ª vez.
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(NovoFoco.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                            // Caso o usuário tenha negado a permissão anteriormente, e não tenha marcado o check "nunca mais mostre este alerta"
+                            // Podemos mostrar um alerta explicando para o usuário porque a permissão é importante.
+                            ActivityCompat.requestPermissions(NovoFoco.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+                        } else {
+                            // Solicita a permissão
+                            ActivityCompat.requestPermissions(NovoFoco.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+                        }
+                    } else {
+                        // Tudo OK, podemos prosseguir.
+
+                        fileFoto = File.createTempFile("agentes" + System.currentTimeMillis(), ".jpg", Environment.getExternalStorageDirectory());
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(fileFoto));
+                        startActivityForResult(intent, 0);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -126,8 +147,8 @@ public class NovoFoco extends AppCompatActivity {
                 try {
 
                     bitmapFoto = BitmapFactory.decodeFile(fileFoto.getAbsolutePath());
-                    FileOutputStream fileOutputStream =  new FileOutputStream(fileFoto);
-                    bitmapFoto.compress(Bitmap.CompressFormat.JPEG,50,fileOutputStream);
+                    FileOutputStream fileOutputStream = new FileOutputStream(fileFoto);
+                    bitmapFoto.compress(Bitmap.CompressFormat.JPEG, 50, fileOutputStream);
 
                     fileOutputStream.flush();
                     fileOutputStream.close();

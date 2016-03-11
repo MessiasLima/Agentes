@@ -14,6 +14,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/banner_ad_teste" />
+        ads:adUnitId="@string/banner_ad_menu_principal" />
 
 </RelativeLayout>
