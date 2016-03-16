@@ -48,7 +48,7 @@
                     android:textSize="@dimen/tamanho_texto_subtitulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nome" />
+                    android:text="@string/rua" />
 
                 <TextView
                     android:id="@+id/nome_foco_dinamico"
@@ -63,7 +63,7 @@
                     android:textSize="@dimen/tamanho_texto_subtitulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tipo" />
+                    android:text="@string/descricao" />
 
                 <TextView
                     android:id="@+id/tipo_foco_dinamico"
