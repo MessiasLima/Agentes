@@ -1,11 +1,15 @@
 package br.com.agente.agentes.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,14 +21,15 @@ import br.com.agente.agentes.R;
 
 /**
  * Created by messias on 2/22/16.
+ * @author Messias Lima
  */
 public class Download {
-    public static Bitmap baixarImagem(final String url, final ImageView imageView) {
+    public static Bitmap baixarImagem(final String url, final ImageView imageView, final Context context) {
 
         new AsyncTask<Void,Void,Bitmap>(){
             @Override
             protected Bitmap doInBackground(Void... params) {
-               return baixarImagemSincrona(url);
+               return baixarImagemSincrona(url,context);
             }
 
             @Override
@@ -41,17 +46,20 @@ public class Download {
         return null;
     }
 
-    public static Bitmap baixarImagemSincrona(String url) {
+    public static Bitmap baixarImagemSincrona(String url, Context context) {
         try {
 
-            URL urlImagem = new URL(url);
+           /* URL urlImagem = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) urlImagem.openConnection();
             InputStream input = connection.getInputStream();
             Bitmap img = BitmapFactory.decodeStream(input);
             input.close();
             connection.disconnect();
-            Log.i("Download imagem", url);
-            return img;
+            Log.i("Download imagem", url);*/
+
+            return Picasso.with(context).load(url).get();
+
+            //return img;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

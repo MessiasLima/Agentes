@@ -1,7 +1,6 @@
 package br.com.agente.agentes.gps;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,13 +11,13 @@ import com.google.android.gms.maps.model.Marker;
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.activity.DenunciarFocos;
 import br.com.agente.agentes.bean.Foco;
-import br.com.agente.agentes.util.Download;
 
 /**
  * Created by messias on 2/25/16.
+ *
  * @author Messias Lima
- * @since 25/02/2016
  * @version 1.0
+ * @since 25/02/2016
  */
 public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
 
@@ -38,7 +37,7 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
     @Override
     public View getInfoContents(Marker marker) {
 
-        if (marker.getTitle().equals("Eu")){
+        if (marker.getTitle().equals("Eu")) {
             view = context.getLayoutInflater().inflate(R.layout.info_window_novo_foco, null);
             return view;
         }
@@ -57,7 +56,7 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
         if (DenunciarFocos.hashFocos.containsKey(marker.getTitle())) {
             Foco foco = DenunciarFocos.hashFocos.get(marker.getTitle());
             if (foco.getFotoBitmap() == null) {
-                foco.atualizarMarcador(marker);
+                foco.atualizarMarcador(marker, context);
             } else {
                 imageView.setImageBitmap(foco.getFotoBitmap());
             }

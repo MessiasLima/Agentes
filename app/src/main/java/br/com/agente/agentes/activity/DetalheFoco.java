@@ -1,7 +1,7 @@
 package br.com.agente.agentes.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,7 +32,7 @@ public class DetalheFoco extends AppCompatActivity {
     private void iniciarComponentes() {
         imagem = (ImageView) findViewById(R.id.img_detalhe_foco);
         if (foco.getFotoBitmap() == null) {
-            Download.baixarImagem(foco.getFoto(),imagem);
+            Download.baixarImagem(foco.getFoto(), imagem, this);
         } else {
             imagem.setImageBitmap(foco.getFotoBitmap());
         }
@@ -40,14 +40,14 @@ public class DetalheFoco extends AppCompatActivity {
         nome = (TextView) findViewById(R.id.nome_foco);
         Fonte.setarFonteTitulo(nome);
 
-        nomeFoco =  (TextView) findViewById(R.id.nome_foco_dinamico);
+        nomeFoco = (TextView) findViewById(R.id.nome_foco_dinamico);
         Fonte.setarFonteTextos(nomeFoco);
         nomeFoco.setText(foco.getNome());
 
-        tipo =  (TextView) findViewById(R.id.tipo_foco);
+        tipo = (TextView) findViewById(R.id.tipo_foco);
         Fonte.setarFonteTitulo(tipo);
 
-        tipoFoco =  (TextView) findViewById(R.id.tipo_foco_dinamico);
+        tipoFoco = (TextView) findViewById(R.id.tipo_foco_dinamico);
         Fonte.setarFonteTextos(tipoFoco);
         tipoFoco.setText(foco.getDescricao());
 

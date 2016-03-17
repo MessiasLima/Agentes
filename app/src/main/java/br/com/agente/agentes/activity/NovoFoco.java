@@ -146,8 +146,14 @@ public class NovoFoco extends AppCompatActivity {
 
                 try {
 
-                    bitmapFoto = BitmapFactory.decodeFile(fileFoto.getAbsolutePath());
+                    //bitmapFoto = BitmapFactory.decodeFile(fileFoto.getAbsolutePath());
+
+                    Bitmap aux = BitmapFactory.decodeFile(fileFoto.getAbsolutePath());
+
                     FileOutputStream fileOutputStream = new FileOutputStream(fileFoto);
+
+                    bitmapFoto = Bitmap.createScaledBitmap(aux,aux.getWidth()/3,aux.getHeight()/3,true);
+
                     bitmapFoto.compress(Bitmap.CompressFormat.JPEG, 50, fileOutputStream);
 
                     fileOutputStream.flush();

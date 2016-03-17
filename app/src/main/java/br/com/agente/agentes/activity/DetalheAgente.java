@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.squareup.picasso.Picasso;
 
 import br.com.agente.agentes.R;
 import br.com.agente.agentes.bean.Agente;
@@ -34,7 +35,10 @@ public class DetalheAgente extends AppCompatActivity {
         AreaDeTransferencia.agente=null;
         textViewNome.setText(agente.getNome());
         textViewMatricula.setText(agente.getMatricula());
-        Download.baixarImagem(agente.getFoto(),imageViewFoto);
+
+        //Picasso.with(this).load(agente.getFoto()).into(imageViewFoto);
+
+        Download.baixarImagem(agente.getFoto(),imageViewFoto,this);
     }
 
     private void iniciarComponentes() {

@@ -1,5 +1,6 @@
 package br.com.agente.agentes.bean;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
@@ -89,11 +90,11 @@ public class Foco {
         this.descricao = descricao;
     }
 
-    public void atualizarMarcador(final Marker marker) {
+    public void atualizarMarcador(final Marker marker, final Context context) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                setFotoBitmap(Download.baixarImagemSincrona(getFoto()));
+                setFotoBitmap(Download.baixarImagemSincrona(getFoto(),context));
                 return null;
             }
 

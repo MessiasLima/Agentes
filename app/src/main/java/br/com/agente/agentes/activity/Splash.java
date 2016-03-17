@@ -36,7 +36,6 @@ public class Splash extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-
         if (verificarPlayServices()){
             new AsyncTask<Void,Void,Void>(){
 
