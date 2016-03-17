@@ -112,11 +112,18 @@ public class DenunciarFocos extends AppCompatActivity {
                 }
             });
         }
+
+
+
         if (ListenerDeLocalizacao.localizacaoAtual != null) {
             adicionarMarcadorUsuario(ListenerDeLocalizacao.localizacaoAtual);
-        } else {
-            Snackbar.make(textoExplicativo, R.string.sem_localizacao, Snackbar.LENGTH_LONG).show();
-        }
+        }else{
+            if (ListenerDeLocalizacao.ultimaLocalizacaoConhecida!=null){
+                adicionarMarcadorUsuario(ListenerDeLocalizacao.ultimaLocalizacaoConhecida);
+            }
+        }// else {
+           // Snackbar.make(textoExplicativo, R.string.sem_localizacao, Snackbar.LENGTH_LONG).show();
+       // }
     }
 
     //Adicinar marcador do jogador
@@ -137,7 +144,7 @@ public class DenunciarFocos extends AppCompatActivity {
             marcadorUsuario.setPosition(new LatLng(location.getLatitude(), location.getLongitude()));
         }*/
         ControleDeMapa.moverCamera(mapa, location);
-        //colocarFocosNoMapa(location, false);
+        colocarFocosNoMapa(location, false);
     }
 
     @Override

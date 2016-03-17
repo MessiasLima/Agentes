@@ -27,6 +27,7 @@ public class ListenerDeLocalizacao implements LocationListener {
 
     private Context context;
     public static Location localizacaoAtual = null;
+    public static Location ultimaLocalizacaoConhecida;
     private AgentesDaArea agentesDaArea;
     private DenunciarFocos denunciarFocos;
 

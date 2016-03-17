@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -83,9 +84,13 @@ public class MenuPrincipal extends AppCompatActivity {
         }*/
 
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 30 * 1000, 5, listenerDeLocalizacao);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 30 * 1000, 50, listenerDeLocalizacao);
+            Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (lastKnownLocation!=null){
+                ListenerDeLocalizacao.ultimaLocalizacaoConhecida=lastKnownLocation;
+            }
             try {
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 30 * 1000, 5, listenerDeLocalizacao);
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 30 * 1000, 50, listenerDeLocalizacao);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

@@ -9,6 +9,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by messias on 2/24/16.
+ * @author Messias Lima
  */
 public class ControleDeMapa {
     //Mover camera
