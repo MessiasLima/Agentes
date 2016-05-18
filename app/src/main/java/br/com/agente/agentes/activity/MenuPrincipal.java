@@ -48,12 +48,11 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal_externo);
         iniciarComponentes();
-        ativarGPS();
     }
 
     @Override
     protected void onResume() {
-
+        ativarGPS();
         super.onResume();
     }
 
@@ -70,20 +69,14 @@ public class MenuPrincipal extends AppCompatActivity {
                 // Podemos mostrar um alerta explicando para o usuário porque a permissão é importante.
                 //Alerta.mandarAlerta(this, getString(R.string.falta_permissao_location));
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 0);
+
             } else {
                 // Solicita a permissão
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 0);
+
             }
         } else {
             // Tudo OK, podemos prosseguir.
-
-
-      /*  if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Alerta.mandarAlerta(this, getString(R.string.falta_permissao_location));
-            return;
-        }*/
-
-
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 30 * 1000, 50, listenerDeLocalizacao);
             Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (lastKnownLocation!=null){
